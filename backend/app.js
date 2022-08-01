@@ -1,21 +1,28 @@
+// requires
 const express = require('express');
-const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
-const dotenv = require('dotenv');
 
+// security
+const dotenv = require('dotenv');
+const helmet = require('helmet');
+
+// routes
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 const Sauce = require('./models/Sauce');
 
+// start express
 const app = express();
 
+// mongoose connect
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+// CORS
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
@@ -33,6 +40,7 @@ app.use(bodyParser.json());
 app.use(helmet());
 app.use(express.json());
 
+// setting routes
 app.use('/api/sauce', sauceRoutes);
 app.use('/api/auth', userRoutes);
 
