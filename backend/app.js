@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const sauce = require('./models/sauce');
 
 mongoose
   .connect(
@@ -10,6 +11,28 @@ mongoose
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+  );
+  next();
+});
+
+app.use(express.json());
+
+app.post('/stuff', (req, res, next) => {
+  console.log(req.body);
+  res.status(201).json({
+    message: 'Objet créé !',
+  });
+});
 
 app.use((req, res, next) => {
   console.log('Requête reçue !');
@@ -34,5 +57,5 @@ module.exports = app;
 
 const userRoutes = require('./routes/user');
 
-app.use('/api/stuff', stuffRoutes);
+app.use('/api/sauce', stuffRoutes);
 app.use('/api/auth', userRoutes);
