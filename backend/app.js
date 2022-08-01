@@ -12,10 +12,7 @@ const Sauce = require('./models/Sauce');
 const app = express();
 
 mongoose
-  .connect(
-    'mongodb+srv://mad7444:<password>@p6cluster.e4vqd.mongodb.net/?retryWrites=true&w=majority',
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
