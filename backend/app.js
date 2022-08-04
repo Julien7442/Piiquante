@@ -11,14 +11,14 @@ const helmet = require('helmet');
 // routes
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
-const Sauce = require('./models/Sauce');
+const Sauce = require('./models/sauceSchema');
 
 // start express
 const app = express();
 
 // mongoose connect
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
