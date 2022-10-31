@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/UserSchema');
+const User = require('../models/userSchema');
 const jwt = require('jsonwebtoken');
 const validator = require('email-validator');
 require('dotenv').config();
@@ -44,9 +44,13 @@ exports.login = (req, res, next) => {
           }
           res.status(200).json({
             userId: user._id,
-            token: jwt.sign({ userId: user._id }, env.RANDOM_TOKEN_SECRET, {
-              expiresIn: '24h',
-            }),
+            token: jwt.sign(
+              { userId: user._id },
+              process.env.RANDOM_TOKEN_SECRET,
+              {
+                expiresIn: '24h',
+              }
+            ),
           });
         })
         .catch((error) => res.status(500).json({ error: 'bcrypt' }));

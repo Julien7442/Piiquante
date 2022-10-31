@@ -18,7 +18,7 @@ exports.getOneSauce = (req, res, next) => {
     .catch((error) => res.status(404).json({ error: error }));
 };
 
-// Create sauce
+/* Create sauce
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
@@ -32,6 +32,38 @@ exports.createSauce = (req, res, next) => {
     .save()
     .then(() => res.status(201).json({ message: 'Sauce enregistré !' }))
     .catch((error) => res.status(400).json({ error }));
+}; */
+
+exports.createSauce = (req, res) => {
+  // récupère les information de la sauce dans une variable
+  const sauces = JSON.parse(req.body.sauce);
+  if (!sauces) {
+    return res
+      .status(401)
+      .json({ error: error, msgErr: 'Erreur récupération des données' });
+  }
+  // crée un nouvel element sauce avec l'url de l'image associer
+  const sauce = new Sauce({
+    ...sauces,
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${
+      req.file.filename
+    }`,
+  });
+  if (!sauce) {
+    return res
+      .status(401)
+      .json({ error: error, msgErr: 'Erreur création objet' });
+  }
+
+  // sauvegarde le nouvel element
+  sauce
+    .save()
+    .then((createdSauce) =>
+      res.status(201).json({ message: 'objet enregistré', data: createdSauce })
+    )
+    .catch((error) =>
+      res.status(400).json({ error: error, msgErr: 'objet non enregistré' })
+    );
 };
 
 // Modify sauce
