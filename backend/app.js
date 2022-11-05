@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
-app.use(helmet());
+app.use(helmet({ crossOriginResourcePolicy: false }));
 app.use(express.json());
 
 // setting routes
