@@ -15,7 +15,7 @@ The technologies used are Node.js, Express and MongoDB
 
 ### Clone the repo :
 
-`git clone https://github.com/Dev-BastienPruvost/piiquante-p6.git`
+`git clone https://github.com/Julien7442/Piiquante.git`
 
 ### In the backend folder
 
