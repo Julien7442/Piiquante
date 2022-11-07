@@ -1,27 +1,42 @@
-# HotTakes
+# Piiquante P6 - Openclassrooms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.4.
+## About the project
 
-## Development server
+This project consists of developing an API for a hot sauce review site.
+The technologies used are Node.js, Express and MongoDB
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Built with
 
-## Code scaffolding
+- Node.js
+- Express.js
+- MongoDB
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Getting Started
 
-## Build
+### Clone the repo :
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+`git clone https://github.com/Dev-BastienPruvost/piiquante-p6.git`
 
-## Running unit tests
+### In the backend folder
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Install dependencies :
 
-## Running end-to-end tests
+`npm install`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Start Node.js API
 
-## Further help
+`npm start`
+To run the application without problems, the server must start on port 3000 (default port)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### In the frontend folder
+
+### Install dependencies :
+
+`npm install`
+
+### Start frontend Angular application
+
+`npm start`
+The application should run on `localhost` with default port `4200`. If the server runs on another port for any reason, this is printed to the console when the server starts, e.g. `Listening on port 4201.`
+
+The application is accessible by going on this url : `http://localhost/4200` (Or another port, this will be specified in the console)
